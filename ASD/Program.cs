@@ -10,9 +10,13 @@ namespace ASD
     {
         static void Main(string[] args)
         {
-            int[] vector = { -1, 2, -3, 3};
+            int[] vector = { -1, 2, -3, 5, 6,  -3, 7};
 
-            Console.WriteLine(Algs.MaximumSubArrayLiniar(vector));
+
+
+
+            Console.WriteLine("Maximum Subarray Brut: {0}", MaximumSubarray.MaximumSubarrayBrut(vector));
+            Console.WriteLine("Maximum Subarray Liniar: {0}", MaximumSubarray.MaximumSubArrayLiniar(vector));
         }
     }
 }
