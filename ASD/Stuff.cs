@@ -18,9 +18,23 @@ namespace ASD
             else
                 return mystery(a + a, b / 2) + a;
         }
+        // ce face aceasta functie?
+        public static String mystery2(String s)
+        {
+            int N = s.Length;
+            
+            if (N <= 1) 
+                return s;
+
+            String a = s.Substring(0, N / 2);
+            String b = s.Substring(N / 2);
+            
+            return mystery2(b) + mystery2(a);
+        }
         static void Main(string[] args)
         {
             Console.WriteLine(mystery(5, 25));
+            Console.WriteLine(mystery2("abcd"));
         }
     }
 }
