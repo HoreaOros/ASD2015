@@ -3,11 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ASD
 {
     class Util
     {
+        public static int[] readInts(string filename)
+        {
+            string line;
+            string[] tokens;
+            int[] arr;
+            char[] seps = {' ', '\t', '\n'};
+            using(StreamReader sr = new StreamReader(filename))
+            {
+                line = sr.ReadToEnd();
+                tokens = line.Split(seps, StringSplitOptions.RemoveEmptyEntries);
+                arr = new int[tokens.Length];
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    arr[i] = int.Parse(tokens[i]);
+                }
+                return arr;
+            }
+        }
         public static double sqrt(double c)
         {
             if (c == 0) 
