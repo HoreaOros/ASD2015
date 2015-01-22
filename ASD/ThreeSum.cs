@@ -35,6 +35,18 @@ namespace ASD
                         contor++;
             return contor;
         }
+        public static int countFaster(int[] arr)
+        {
+            int contor = 0;
+            int n;
+            n = arr.Length;
+            Array.Sort(arr);
+
+            // trebuie scrisa o secventa liniara care determina cate triplete de numere din vectorul arr au suma 0
+            // TODO
+
+            return contor;
+        }
         public static void Main(string[] args)
         {
 
