@@ -119,7 +119,7 @@ namespace ASD
         /// <param name="arr"></param>
         /// <param name="lo"></param>
         /// <param name="hi"></param>
-        /// <returns></returns>
+        /// <returns>Pozitia pe care se afla key sau -1 daca nu e in vector</returns>
         public static int bitonic_search(int key, int[] arr)
         {
             int maxPoz = searchMax(arr, 0, arr.Length - 1);
