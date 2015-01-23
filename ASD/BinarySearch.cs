@@ -109,6 +109,52 @@ namespace ASD
             else
                 return -1;
         }
+
+        /// <summary>
+        /// Un vector cu n elemente DISTINCTE se numeste bitonic daca exista un index k pentru care elementele de la 0 la k sunt in ordine crescatoare
+        /// si elementele de la k + 1 la n - 1 sunt in ordine descrescatoare
+        /// Se cere sa se determine daca o valoarea key se afla intr-un vector bitonic
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="arr"></param>
+        /// <param name="lo"></param>
+        /// <param name="hi"></param>
+        /// <returns></returns>
+        public static int bitonic_search(int key, int[] arr)
+        {
+            int maxPoz = searchMax(arr, 0, arr.Length - 1);
+
+            int pozLeft = rankRec(key, arr, 0, maxPoz);
+            int pozRight = rankRec(key, arr, maxPoz + 1, arr.Length - 1);
+
+            if (pozLeft == -1 && pozRight == -1)
+                return -1;
+            else
+                return Math.Max(pozLeft, pozRight);
+            
+        }
+
+        /// <summary>
+        /// Determina pozitia celui mai mare element intr-un vector bitonic (are elemente DISTINCTE)
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns>Pozitia pe care se afla elementul maxim</returns>
+        private static int searchMax(int[] arr, int lo, int hi)
+        {
+            if (lo == hi)
+                return lo;
+            else
+            {
+                int mid = lo + (hi - lo) / 2;
+                if (arr[mid] < arr[mid + 1])
+                    return searchMax(arr, mid + 1, hi);
+                else
+                    return searchMax(arr, lo, mid - 1);
+            }
+        }
+
         static void Main(string[] args)
         {
             int[] arr = { -3, 2, 5, 4 };
@@ -125,6 +171,18 @@ namespace ASD
             Console.WriteLine("Numarul de numere mai mici decat {0} = {1}", key, lessThanKey(key, arr2));
             Console.WriteLine("Numarul de numere mai mari decat {0} = {1}", key, greaterThanKey(key, arr2));
 
+
+            int[] arrBitonic = { 1, 2, 3, 4, 5, 6, 4, 2, 0, -2, -4, -6 };
+            key = 0;
+            int poz = 0;
+            if ((poz = bitonic_search(key, arrBitonic)) == -1)
+            {
+                Console.WriteLine("{0} nu se afla in vectorul bitonic", key);
+            }
+            else
+            {
+                Console.WriteLine("{0} se afla in vectorul bitonic pe pozitia {1}", key, poz);
+            }
         }
     }
 }
