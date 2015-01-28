@@ -27,6 +27,18 @@ namespace ASD
                 return arr;
             }
         }
+        public static string[] readWords(string filename)
+        {
+            string line;
+            string[] tokens;
+            char[] seps = { ' ', '\t', '\n' };
+            using (StreamReader sr = new StreamReader(filename))
+            {
+                line = sr.ReadToEnd();
+                tokens = line.Split(seps, StringSplitOptions.RemoveEmptyEntries);
+            }
+            return tokens;
+        }
         public static double sqrt(double c)
         {
             if (c == 0) 
@@ -70,5 +82,7 @@ namespace ASD
             }
             Console.WriteLine();
         }
+
+        
     }
 }

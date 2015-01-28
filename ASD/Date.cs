@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ASD
 {
-    public class Date
+    public class Date: IComparable<Date>
     {
         private int zi, luna, an;
         public Date(int zi, int luna, int an)
@@ -42,6 +42,26 @@ namespace ASD
         public static void Main(string[] args)
         {
 
+        }
+
+        public int CompareTo(Date other)
+        {
+            if (other == null)
+                return 1;
+            if (this.an < other.an)
+                return -1;
+            else if (this.an > other.an)
+                return 1;
+            else if (this.luna < other.luna)
+                return -1;
+            else if (this.luna > other.luna)
+                return 1;
+            else if (this.zi < other.zi)
+                return -1;
+            else if (this.zi > other.zi)
+                return 1;
+            else
+                return 0;
         }
     }
 }
