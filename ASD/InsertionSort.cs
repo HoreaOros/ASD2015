@@ -7,14 +7,12 @@ using System.Diagnostics;
 
 namespace ASD
 {
-    class SelectionSort
+    class InsertionSort
     {
         public static void Main(string[] args)
         {
             string filename = "words3.txt";
             string[] a = Util.readWords(filename);
-
-            int[] b = { 3, 2, 1 };
 
             sort(a);
 
@@ -23,27 +21,21 @@ namespace ASD
             show(a);
 
         }
-
         /// <summary>
-        /// Selection sort. Toate elementele din stanga pozitiei i sunt ordonate si sunt cele mai mici i elemente din vector
+        /// Insertion sort. Toate elementele din stanga pozitiei i sunt ordonate. 
+        /// Elementul de pe pozitia i il inseram la locul lui prin mutarea elementelor inspre dreapta daca e cazul
         /// </summary>
         /// <param name="a"></param>
         public static void sort<T>(T[] a) where T: IComparable<T>
         {
             int i, j;
             int n = a.Length;
-            int min;
-            for (i = 0; i < n; i++)
+            for (i = 1; i < n; i++)
             {
-                min = i;
-                for (j = i + 1; j < n; j++)
-                    if (less(a[j], a[min]))
-                        min = j;
-                exch(a, i, min);
+                for (j = i; j > 0 && less(a[j], a[j - 1]); j--)
+                    exch(a, j, j - 1);
             }
         }
-
-
         /// <summary>
         /// Metoda privata ajutatoare pentru a determina daca un element este mai mic decat altul
         /// </summary>

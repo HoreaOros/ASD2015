@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ASD.ExampleSort</StartupObject>
+    <StartupObject>ASD.SortCompare</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -55,6 +55,7 @@
     <Compile Include="EvaluareExpresie.cs" />
     <Compile Include="ExampleSort.cs" />
     <Compile Include="Exceptions.cs" />
+    <Compile Include="InsertionSort.cs" />
     <Compile Include="MaximumSubarray.cs" />
     <Compile Include="MinimLocal.cs" />
     <Compile Include="Program.cs" />
@@ -62,6 +63,8 @@
     <Compile Include="Queue.cs" />
     <Compile Include="QueueClient.cs" />
     <Compile Include="ResizingStack.cs" />
+    <Compile Include="SelectionSort.cs" />
+    <Compile Include="SortCompare.cs" />
     <Compile Include="Stack.cs" />
     <Compile Include="StackClient.cs" />
     <Compile Include="StackLL.cs" />
