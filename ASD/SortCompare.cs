@@ -53,7 +53,7 @@ namespace ASD
                     SelectionSort.sort(a);
                     break;
                 case "Shell":
-                    //ShellSort.sort(a);
+                    ShellSort.sort(a);
                     break;
                 case "Merge":
                     //MergeSort.sort(a);

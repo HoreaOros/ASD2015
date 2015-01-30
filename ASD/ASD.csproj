@@ -65,6 +65,7 @@
     <Compile Include="QueueClient.cs" />
     <Compile Include="ResizingStack.cs" />
     <Compile Include="SelectionSort.cs" />
+    <Compile Include="ShellSort.cs" />
     <Compile Include="SortCompare.cs" />
     <Compile Include="Stack.cs" />
     <Compile Include="StackClient.cs" />

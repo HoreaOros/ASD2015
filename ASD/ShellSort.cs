@@ -7,12 +7,12 @@ using System.Diagnostics;
 
 namespace ASD
 {
-    class InsertionSort
+    class ShellSort
     {
         /// <summary>
-        /// Nu permitem instantierea clasei
+        /// Constructor private. Nu vrem sa permitem instantierea clasei
         /// </summary>
-        private InsertionSort()
+        private ShellSort()
         {
 
         }
@@ -29,19 +29,31 @@ namespace ASD
 
         }
         /// <summary>
-        /// Insertion sort. Toate elementele din stanga pozitiei i sunt ordonate. 
+        /// InsertionX sort. Mai eficient decat InsetionSort pentru ca folosim un singur apel la exch pentru fiecare element.
+        /// Toate elementele din stanga pozitiei i sunt ordonate. 
         /// Elementul de pe pozitia i il inseram la locul lui prin mutarea elementelor inspre dreapta daca e cazul
         /// </summary>
         /// <param name="a"></param>
-        public static void sort<T>(T[] a) where T: IComparable<T>
+        public static void sort<T>(T[] a) where T : IComparable<T>
         {
-            int i, j;
             int n = a.Length;
-            for (i = 1; i < n; i++)
-            {
-                for (j = i; j > 0 && less(a[j], a[j - 1]); j--)
-                    exch(a, j, j - 1);
+
+            // 3x+1 secventa de incrementuri:  1, 4, 13, 40, 121, 364, 1093, ... 
+            int h = 1;
+            while (h < n / 3) 
+                h = 3 * h + 1; 
+
+            while (h >= 1) {
+                // h-sortare a vectorului 
+                for (int i = h; i < n; i++) {
+                    for (int j = i; j >= h && less(a[j], a[j-h]); j -= h) {
+                        exch(a, j, j-h);
+                    }
+                }
+                
+                h /= 3;
             }
+            
         }
         /// <summary>
         /// Metoda privata ajutatoare pentru a determina daca un element este mai mic decat altul
@@ -49,7 +61,7 @@ namespace ASD
         /// <param name="p"></param>
         /// <param name="q"></param>
         /// <returns></returns>
-        private static bool less<T>(T p, T q) where T: IComparable<T>
+        private static bool less<T>(T p, T q) where T : IComparable<T>
         {
             return p.CompareTo(q) < 0;
         }
@@ -59,7 +71,7 @@ namespace ASD
         /// <param name="a"></param>
         /// <param name="i"></param>
         /// <param name="j"></param>
-        private static void exch<T>(T[] a, int i, int j) where T: IComparable<T>
+        private static void exch<T>(T[] a, int i, int j) where T : IComparable<T>
         {
             T t;
             t = a[i];
@@ -70,7 +82,7 @@ namespace ASD
         /// Metoda privata ajutatoare care afiseaza elementele vectorului pe o singura linie
         /// </summary>
         /// <param name="a">Vector de elemente</param>
-        private static void show<T>(T[] a) where T: IComparable<T>
+        private static void show<T>(T[] a) where T : IComparable<T>
         {
             for (int i = 0; i < a.Length; i++)
             {
@@ -83,7 +95,7 @@ namespace ASD
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
-        public static bool isSorted<T>(T[] a) where T: IComparable<T>
+        public static bool isSorted<T>(T[] a) where T : IComparable<T>
         {
             for (int i = 1; i < a.Length; i++)
                 if (less(a[i], a[i - 1]))

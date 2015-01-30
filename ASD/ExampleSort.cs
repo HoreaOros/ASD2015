@@ -22,7 +22,7 @@ namespace ASD
 
         }
 
-        public static void sort(IComparable[] a)
+        public static void sort<T>(T[] a) where T: IComparable<T>
         {
             int i, j;
             for (i = 0; i < a.Length - 1; i++)
@@ -36,7 +36,7 @@ namespace ASD
         /// <param name="p"></param>
         /// <param name="q"></param>
         /// <returns></returns>
-        private static bool less(IComparable p, IComparable q)
+        private static bool less<T>(T p, T q) where T: IComparable<T>
         {
             return p.CompareTo(q) < 0;
         }
@@ -46,9 +46,9 @@ namespace ASD
         /// <param name="a"></param>
         /// <param name="i"></param>
         /// <param name="j"></param>
-        private static void exch(IComparable[] a, int i, int j)
+        private static void exch<T>(T[] a, int i, int j) where T: IComparable<T>
         {
-            IComparable t;
+            T t;
             t = a[i];
             a[i] = a[j];
             a[j] = t;
@@ -57,11 +57,11 @@ namespace ASD
         /// Metoda privata ajutatoare care afiseaza elementele vectorului pe o singura linie
         /// </summary>
         /// <param name="a">Vector de elemente</param>
-        private static void show(IComparable[] a)
+        private static void show<T>(T[] a) where T: IComparable<T>
         {
             for (int i = 0; i < a.Length; i++)
             {
-                Console.WriteLine("{0} ", a[i]);
+                Console.Write("{0} ", a[i]);
             }
             Console.WriteLine();
         }
@@ -70,7 +70,7 @@ namespace ASD
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
-        public static bool isSorted(IComparable[] a)
+        public static bool isSorted<T>(T[] a) where T: IComparable<T>
         {
             for (int i = 1; i < a.Length; i++)
                 if (less(a[i], a[i - 1]))

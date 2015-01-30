@@ -88,7 +88,7 @@ namespace ASD
         {
             for (int i = 0; i < a.Length; i++)
             {
-                Console.WriteLine("{0} ", a[i]);
+                Console.Write("{0} ", a[i]);
             }
             Console.WriteLine();
         }
