@@ -46,6 +46,9 @@ namespace ASD
                 case "Insertion":
                     InsertionSort.sort(a);
                     break;
+                case "InsertionX":
+                    InsertionXSort.sort(a);
+                    break;
                 case "Selection":
                     SelectionSort.sort(a);
                     break;

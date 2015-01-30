@@ -56,6 +56,7 @@
     <Compile Include="ExampleSort.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="InsertionSort.cs" />
+    <Compile Include="InsertionXSort.cs" />
     <Compile Include="MaximumSubarray.cs" />
     <Compile Include="MinimLocal.cs" />
     <Compile Include="Program.cs" />

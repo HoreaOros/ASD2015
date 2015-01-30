@@ -9,6 +9,13 @@ namespace ASD
 {
     class InsertionSort
     {
+        /// <summary>
+        /// Nu permitem instantierea clasei
+        /// </summary>
+        private InsertionSort()
+        {
+
+        }
         public static void Main(string[] args)
         {
             string filename = "words3.txt";
