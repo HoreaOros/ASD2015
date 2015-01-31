@@ -7,12 +7,16 @@ using System.Diagnostics;
 
 namespace ASD
 {
-    class MergeSort
+    /// <summary>
+    /// Implementare eficienta a MergeSort
+    /// </summary>
+    class MergeXSort
     {
+        private static readonly int CUTOFF = 7;  // stabilim o dimensiune a vectorului pentru care soratarea se face cu InsertionSort
         /// <summary>
         /// Nu permitem instantierea clasei
         /// </summary>
-        private MergeSort()
+        private MergeXSort()
         {
 
         }
@@ -35,35 +39,56 @@ namespace ASD
         public static void sort<T>(T[] a) where T : IComparable<T>
         {
             T[] aux = new T[a.Length]; // vectorul auxiliar il cream o singura data pentru un spor de eficienta
-            sort(a, 0, a.Length - 1, aux);
+            for (int i = 0; i < a.Length; i++)
+                aux[i] = a[i];
+
+            sort(aux, 0, a.Length - 1, a);
         }
 
-        private static void sort<T>(T[] a, int lo, int hi, T[] aux) where T: IComparable<T>
+        private static void sort<T>(T[] src, int lo, int hi, T[] dst) where T : IComparable<T>
         {
-            if (hi <= lo)
+            if (hi <= lo + CUTOFF) // daca vectorul are o lungime mica il sortam cu insertionSort
+            {
+                insertionSort(dst, lo, hi);
                 return;
+            }
 
             int mid = lo + (hi - lo) / 2;
-            sort(a, lo, mid, aux);
-            sort(a, mid + 1, hi, aux);
-            merge(a, lo, mid, hi, aux);
+            sort(dst, lo, mid, src);
+            sort(dst, mid + 1, hi, src);
+
+            if (!less(src[mid + 1], src[mid]))
+            {
+                for (int i = lo; i <= hi; i++) 
+                    dst[i] = src[i];
+                return;
+            }
+
+            merge(src, lo, mid, hi, dst);
         }
 
-        private static void merge<T>(T[] a, int lo, int mid, int hi, T[] aux) where T: IComparable<T>
+        // sortam de la a[lo] pana la  a[hi] folosind InsertionSort
+        private static void insertionSort<T>(T[] a, int lo, int hi) where T: IComparable<T>
+        {
+            for (int i = lo; i <= hi; i++)
+                for (int j = i; j > lo && less(a[j], a[j - 1]); j--)
+                    exch(a, j, j - 1);
+        }
+
+        private static void merge<T>(T[] src, int lo, int mid, int hi, T[] dst) where T : IComparable<T>
         {
             int i = lo, j = mid + 1;
-            for (int k = lo; k <= hi; k++) // copiem portiunea din a in aux
-                aux[k] = a[k];
-
             for (int k = lo; k <= hi; k++)
-                if (i > mid)
-                    a[k] = aux[j++];
-                else if (j > hi)
-                    a[k] = aux[i++];
-                else if (less(aux[j], aux[i]))
-                    a[k] = aux[j++];
-                else
-                    a[k] = aux[i++];
+            {
+                if (i > mid) 
+                    dst[k] = src[j++];
+                else if (j > hi) 
+                    dst[k] = src[i++];
+                else if (less(src[j], src[i])) 
+                    dst[k] = src[j++];   // pentru a asigura stabilitate
+                else 
+                    dst[k] = src[i++];
+            }
         }
         /// <summary>
         /// Metoda privata ajutatoare pentru a determina daca un element este mai mic decat altul

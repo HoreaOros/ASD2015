@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ASD.MergeSort</StartupObject>
+    <StartupObject>ASD.MergeXSort</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -47,6 +47,7 @@
     <Compile Include="Bag.cs" />
     <Compile Include="BagClient.cs" />
     <Compile Include="BinarySearch.cs" />
+    <Compile Include="BottomUpMergeSort.cs" />
     <Compile Include="Counter.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="DoublingRatio.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="InsertionXSort.cs" />
     <Compile Include="MaximumSubarray.cs" />
     <Compile Include="MergeSort.cs" />
+    <Compile Include="MergeXSort.cs" />
     <Compile Include="MinimLocal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
