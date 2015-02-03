@@ -12,7 +12,11 @@ namespace ASD
     /// </summary>
     class MergeXSort
     {
+<<<<<<< HEAD
         private static readonly int CUTOFF = 7;  // stabilim o dimensiune a vectorului pentru care soratarea se face cu InsertionSort (o alta valoarea ar putea fi 15)
+=======
+        private static readonly int CUTOFF = 7;  // stabilim o dimensiune a vectorului pentru care soratarea se face cu InsertionSort
+>>>>>>> 92c526ba4cfe00b6e4dd808bef8cc3dc53f5e2e3
         /// <summary>
         /// Nu permitem instantierea clasei
         /// </summary>

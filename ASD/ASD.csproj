@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ASD.Test</StartupObject>
+    <StartupObject>ASD.MergeXSort</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
