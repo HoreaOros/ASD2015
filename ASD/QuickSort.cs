@@ -8,18 +8,18 @@ using System.Diagnostics;
 namespace ASD
 {
     /// <summary>
-    /// Implementare eficienta a MergeSort
+    /// Quick Sort
     /// </summary>
-    class MergeXSort
+    class QuickSort
     {
 
-        private static readonly int CUTOFF = 7;  // stabilim o dimensiune a vectorului pentru care soratarea se face cu InsertionSort (o alta valoarea ar putea fi 15)
+      
 
 
         /// <summary>
         /// Nu permitem instantierea clasei
         /// </summary>
-        private MergeXSort()
+        private QuickSort()
         {
 
         }
@@ -41,58 +41,39 @@ namespace ASD
         /// <param name="a"></param>
         public static void sort<T>(T[] a) where T : IComparable<T>
         {
-            T[] aux = new T[a.Length]; // vectorul auxiliar il cream o singura data pentru un spor de eficienta
-            for (int i = 0; i < a.Length; i++)
-                aux[i] = a[i];
-
-            sort(aux, 0, a.Length - 1, a);
+            Util.shuffle(a); // se elimina dependenta de datele de intrare
+            sort(a, 0, a.Length);
         }
 
-        private static void sort<T>(T[] src, int lo, int hi, T[] dst) where T : IComparable<T>
+        private static void sort<T>(T[] a, int lo, int hi) where T : IComparable<T>
         {
-            if (hi <= lo + CUTOFF) // daca vectorul are o lungime mica il sortam cu insertionSort
-            {
-                insertionSort(dst, lo, hi);
+            if (hi <= lo)
                 return;
-            }
-
-            int mid = lo + (hi - lo) / 2;
-            sort(dst, lo, mid, src);
-            sort(dst, mid + 1, hi, src);
-
-            if (!less(src[mid + 1], src[mid]))
-            {
-                for (int i = lo; i <= hi; i++) 
-                    dst[i] = src[i];
-                return;
-            }
-
-            merge(src, lo, mid, hi, dst);
+            int j = partition(a, lo, hi);
+            sort(a, lo, j - 1);
+            sort(a, j + 1, hi);
         }
 
-        // sortam de la a[lo] pana la  a[hi] folosind InsertionSort
-        private static void insertionSort<T>(T[] a, int lo, int hi) where T: IComparable<T>
+        private static int partition<T>(T[] a, int lo, int hi) where T: IComparable<T>
         {
-            for (int i = lo; i <= hi; i++)
-                for (int j = i; j > lo && less(a[j], a[j - 1]); j--)
-                    exch(a, j, j - 1);
-        }
-
-        private static void merge<T>(T[] src, int lo, int mid, int hi, T[] dst) where T : IComparable<T>
-        {
-            int i = lo, j = mid + 1;
-            for (int k = lo; k <= hi; k++)
+            int i = lo, j = hi + 1;
+            T v = a[lo]; // elementul dupa care se face partitionarea. la sfarsitul procesului acest element va fi pe locul final in vectorul sortat
+            while (true)
             {
-                if (i > mid) 
-                    dst[k] = src[j++];
-                else if (j > hi) 
-                    dst[k] = src[i++];
-                else if (less(src[j], src[i])) 
-                    dst[k] = src[j++];   // pentru a asigura stabilitate
-                else 
-                    dst[k] = src[i++];
+                while (less(a[++i], v))
+                    if (i == hi)
+                        break;
+                while (less(v, a[--j]))
+                    if (j == lo)
+                        break;
+                if (i >= j)
+                    break;
+                exch(a, i, j);
             }
+            exch(a, lo, j); // punem pe v in pozitia finala j
+            return j;       // a[lo..j-1] <= a[j] <= a[j+1..hi]
         }
+       
         /// <summary>
         /// Metoda privata ajutatoare pentru a determina daca un element este mai mic decat altul
         /// </summary>
