@@ -13,4 +13,7 @@ namespace ASD
     class StackEmptyException : System.Exception
     {
     }
+    class NoSuchElementException : System.Exception
+    {
+    }
 }

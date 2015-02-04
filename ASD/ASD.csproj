@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ASD.QuickSort</StartupObject>
+    <StartupObject>ASD.MaxMinPQClient</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -59,9 +59,12 @@
     <Compile Include="InsertionSort.cs" />
     <Compile Include="InsertionXSort.cs" />
     <Compile Include="MaximumSubarray.cs" />
+    <Compile Include="MaxPQ.cs" />
+    <Compile Include="MaxMinPQClient.cs" />
     <Compile Include="MergeSort.cs" />
     <Compile Include="MergeXSort.cs" />
     <Compile Include="MinimLocal.cs" />
+    <Compile Include="MinPQ.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queue.cs" />
