@@ -26,7 +26,7 @@ namespace ASD
             double[] da = { 1, 2, 3 };
 
             fa(sa);
-            fa(da);
+            //fa(da);
         }
 
         private static void fa(IComparable[] da)

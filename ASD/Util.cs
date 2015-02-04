@@ -56,9 +56,9 @@ namespace ASD
         /// Permuta aleator elementele unui vector
         /// </summary>
         /// <param name="arr">Vector de numere</param>
-        public static void shuffle(int[] arr)
+        public static void shuffle<T>(T[] arr)
         {
-            int temp;
+            T temp;
             Random rnd = new Random();
             for (int i = 0; i < arr.Length; i++)
             { 

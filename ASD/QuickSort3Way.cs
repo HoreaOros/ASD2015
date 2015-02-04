@@ -10,16 +10,16 @@ namespace ASD
     /// <summary>
     /// Quick Sort
     /// </summary>
-    class QuickSort
+    class QuickSort3Way
     {
 
-      
+
 
 
         /// <summary>
         /// Nu permitem instantierea clasei
         /// </summary>
-        private QuickSort()
+        private QuickSort3Way()
         {
 
         }
@@ -49,30 +49,23 @@ namespace ASD
         {
             if (hi <= lo)
                 return;
-            int j = partition(a, lo, hi);
-            sort(a, lo, j - 1);
-            sort(a, j + 1, hi);
+            int lt = lo, i = lo + 1, gt = hi;
+            T v = a[lo];
+            while (i <= gt)
+            {
+                int cmp = a[i].CompareTo(v);
+                if (cmp < 0) 
+                    exch(a, lt++, i++);
+                else if (cmp > 0) 
+                    exch(a, i, gt--);
+                else 
+                    i++;
+            }
+            // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi].
+            sort(a, lo, lt - 1);
+            sort(a, gt + 1, hi);
         }
 
-        private static int partition<T>(T[] a, int lo, int hi) where T: IComparable<T>
-        {
-            int i = lo, j = hi + 1;
-            T v = a[lo]; // elementul dupa care se face partitionarea. la sfarsitul procesului acest element va fi pe locul final in vectorul sortat
-            while (true)
-            {
-                while (less(a[++i], v))
-                    if (i == hi)
-                        break;
-                while (less(v, a[--j]))
-                    if (j == lo)
-                        break;
-                if (i >= j)
-                    break;
-                exch(a, i, j);
-            }
-            exch(a, lo, j); // punem pe v in pozitia finala j
-            return j;       // a[lo..j-1] <= a[j] <= a[j+1..hi]
-        }
        
         /// <summary>
         /// Metoda privata ajutatoare pentru a determina daca un element este mai mic decat altul
