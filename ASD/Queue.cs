@@ -85,9 +85,7 @@ namespace ASD
             if (left < right)
             {
                 for (int i = left; i < right; i++)
-                {
                     yield return data[i];
-                }
             }
             else
             {
