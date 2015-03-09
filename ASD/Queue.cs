@@ -27,17 +27,38 @@ namespace ASD
             this.capacity = capacity;
             data = new Item[capacity];
         }
+        int nextPoz(int index)
+        {
+            if (index < capacity - 1)
+                return index + 1;
+            else
+                return 0;
+        }
         /// <summary>
         /// Adaugarea unui element in coada
         /// </summary>
         /// <param name="item">Elementul ce se adauga</param>
         public void enqueue(Item item)
         {
-            if (right < capacity - 1)
-                data[right++] = item;
+            /*
+            data[right] = item;
+            if (right == capacity - 1)
+            {
+                
+                right = 0;
+            }
             else
+            {
+                right += 1;
+            }
+             */
+            if (left == nextPoz(right))
                 throw new QueueFullException();
-        }
+            else
+                data[right] = item;
+            right = nextPoz(right);
+
+         } 
         /// <summary>
         /// Eliminarea elementului care a fost adaugat cel mai demult
         /// </summary>
@@ -53,9 +74,24 @@ namespace ASD
         /// Este goala coada?
         /// </summary>
         /// <returns></returns>
-        public bool isEmpty()
+        public Item dequeue()
         {
-            return left == right;
+            /*
+            Item x = data[left];
+            if (left == capacity - 1)
+                left = 0;
+            else
+                left += 1;
+
+            return x;
+             */
+            Item x;
+            if (left == right)
+                throw new QueueEmptyException();
+            else
+                x = data[left];
+            left = nextPoz(left);
+            return x;
         }
         /// <summary>
         /// Numarul de elemente din coada
@@ -63,7 +99,10 @@ namespace ASD
         /// <returns></returns>
         public int size()
         {
+            if(left<right)
             return right - left;
+            else
+            return left-right;
         }
         public static void Main(string[] args)
         {
@@ -75,10 +114,22 @@ namespace ASD
 
         public IEnumerator<Item> GetEnumerator()
         {
-            for (int i = left; i < right; i++)
+            if (left < right)
             {
-                yield return data[i];
+                for (int i = left; i < right; i++)
+                {
+                    yield return data[i];
+                }
             }
+            else
+            {
+                for (int j = 0; j < right; j++)
+                    yield return data[j];
+                for (int i = left; i < capacity; i++)
+                    yield return data[i];
+
+            }
+
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
