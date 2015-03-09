@@ -40,18 +40,6 @@ namespace ASD
         /// <param name="item">Elementul ce se adauga</param>
         public void enqueue(Item item)
         {
-            /*
-            data[right] = item;
-            if (right == capacity - 1)
-            {
-                
-                right = 0;
-            }
-            else
-            {
-                right += 1;
-            }
-             */
             if (left == nextPoz(right))
                 throw new QueueFullException();
             else
@@ -65,26 +53,6 @@ namespace ASD
         /// <returns></returns>
         public Item dequeue()
         {
-            if (left < right)
-                return data[left++];
-            else
-                throw new QueueEmptyException();
-        }
-        /// <summary>
-        /// Este goala coada?
-        /// </summary>
-        /// <returns></returns>
-        public Item dequeue()
-        {
-            /*
-            Item x = data[left];
-            if (left == capacity - 1)
-                left = 0;
-            else
-                left += 1;
-
-            return x;
-             */
             Item x;
             if (left == right)
                 throw new QueueEmptyException();
@@ -92,6 +60,14 @@ namespace ASD
                 x = data[left];
             left = nextPoz(left);
             return x;
+        }
+         /// <summary>
+        /// Este goala coada?
+        /// </summary>
+        /// <returns></returns>
+        public bool isEmpty()
+        {
+            return left == right;
         }
         /// <summary>
         /// Numarul de elemente din coada
@@ -104,14 +80,6 @@ namespace ASD
             else
             return left-right;
         }
-        public static void Main(string[] args)
-        {
-            Queue<Date> queue = new Queue<Date>();
-            queue.enqueue(new Date(31, 12, 1999));
-
-            Date next = queue.dequeue();
-        }
-
         public IEnumerator<Item> GetEnumerator()
         {
             if (left < right)
