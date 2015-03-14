@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ASD.MaxMinPQClient</StartupObject>
+    <StartupObject>ASD.STClient</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,8 +56,10 @@
     <Compile Include="EvaluareExpresie.cs" />
     <Compile Include="ExampleSort.cs" />
     <Compile Include="Exceptions.cs" />
+    <Compile Include="HeapSort.cs" />
     <Compile Include="InsertionSort.cs" />
     <Compile Include="InsertionXSort.cs" />
+    <Compile Include="KendallTau.cs" />
     <Compile Include="MaximumSubarray.cs" />
     <Compile Include="MaxPQ.cs" />
     <Compile Include="MaxMinPQClient.cs" />
@@ -72,16 +74,21 @@
     <Compile Include="QuickSort.cs" />
     <Compile Include="QuickSort3Way.cs" />
     <Compile Include="ResizingStack.cs" />
+    <Compile Include="Selection.cs" />
     <Compile Include="SelectionSort.cs" />
     <Compile Include="ShellSort.cs" />
     <Compile Include="SortCompare.cs" />
+    <Compile Include="ST.cs" />
     <Compile Include="Stack.cs" />
     <Compile Include="StackClient.cs" />
     <Compile Include="StackLL.cs" />
     <Compile Include="StackLLClient.cs" />
+    <Compile Include="STClient.cs" />
     <Compile Include="Stuff.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="ThreeSum.cs" />
+    <Compile Include="TopM.cs" />
+    <Compile Include="Transaction.cs" />
     <Compile Include="TwoSum.cs" />
     <Compile Include="UF.cs" />
     <Compile Include="UFQuickUnion.cs" />
@@ -104,13 +111,25 @@
     <Content Include="8Kints.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="largeT.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="largeUF.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="largeW.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="mediumUF.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="tinyT.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="tinyUF.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tinyW.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="words3.txt">

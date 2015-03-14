@@ -36,6 +36,7 @@ namespace ASD
                 temp[i] = data[i];
             }
             data = temp;
+            //this.capacity = max;
         }
         /// <summary>
         /// Adaugarea unui element in stiva
@@ -61,8 +62,12 @@ namespace ASD
             {
                 item =  data[--count];
                 data[count] = default(Item); // valoarea va fi facuta null pentru ca garbage collectorul sa poate recupera memoria
-                if (count == capacity / 4) 
+                if (count == capacity / 4)
+                {
                     resize(capacity / 2);
+                    capacity /= 2;
+                }
+                    
                 return item;
             }
             else

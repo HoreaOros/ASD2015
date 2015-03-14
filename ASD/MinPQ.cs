@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 namespace ASD
 {
-    class MinPQ<Key> where Key : IComparable<Key>
+    class MinPQ<Key>: IEnumerable<Key> where Key : IComparable<Key>
     {
         private Key[] pq;
         private int N;
@@ -193,5 +193,21 @@ namespace ASD
         }
 
 
+
+        public IEnumerator<Key> GetEnumerator()
+        {
+            MinPQ<Key> copy = new MinPQ<Key>(1);
+            for (int i = 1; i <= N; i++)
+            {
+                copy.insert(pq[i]);
+            }
+            while (!copy.isEmpty())
+                yield return copy.delMin();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

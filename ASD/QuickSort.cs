@@ -34,6 +34,12 @@ namespace ASD
 
             show(a);
 
+            QuickSort.sort(a);
+            int count = 1; // presupunem a.Length > 0.
+            for (int i = 1; i < a.Length; i++)
+                if (a[i].CompareTo(a[i - 1]) != 0)
+                    count++;
+
         }
         /// <summary>
         /// MergeSort 

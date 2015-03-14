@@ -5,6 +5,9 @@ using System.Text;
 
 namespace ASD
 {
+    /// <summary>
+    /// Data calendaristica
+    /// </summary>
     public class Date: IComparable<Date>
     {
         private int zi, luna, an;
@@ -13,6 +16,13 @@ namespace ASD
             this.zi = zi;
             this.luna = luna;
             this.an = an;
+        }
+        public Date(string data)
+        {
+            string[] tokens = data.Split(new char[] { '-', '/' }, StringSplitOptions.RemoveEmptyEntries);
+            zi = int.Parse(tokens[0]);
+            luna = int.Parse(tokens[1]);
+            an = int.Parse(tokens[2]);
         }
         public int Zi
         {
@@ -62,6 +72,28 @@ namespace ASD
                 return 1;
             else
                 return 0;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == this)
+                return true;
+
+            if (obj == null)
+                return false;
+
+            if (obj.GetType() != this.GetType())
+                return false;
+
+            Date that = (Date)obj;
+            return (this.an == that.an && this.luna == that.luna && this.zi == that.zi);
+        }
+        public override int GetHashCode()
+        {
+            int hash = 17;
+            hash = 31 * hash + luna;
+            hash = 31 * hash + zi;
+            hash = 31 * hash + an;
+            return hash;
         }
     }
 }

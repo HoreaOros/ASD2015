@@ -95,7 +95,7 @@ namespace ASD
 
         public IEnumerator<Item> GetEnumerator()
         {
-            for (int i = count - 1; i >= 0; i++)
+            for (int i = count - 1; i >= 0; i--)
             {
                 yield return data[i];
             }

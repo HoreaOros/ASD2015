@@ -13,7 +13,7 @@ namespace ASD
     class Queue<Item>: IEnumerable<Item>
     {
         private Item[] data;
-        private int capacity = 32;
+        private int capacity = 42;
         private int left = 0, right = 0;
         /// <summary>
         /// Crearea unei cozi fara nici un element
