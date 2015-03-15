@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ASD.STClient</StartupObject>
+    <StartupObject>ASD.BinarySearchSTClient</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -47,6 +47,8 @@
     <Compile Include="Bag.cs" />
     <Compile Include="BagClient.cs" />
     <Compile Include="BinarySearch.cs" />
+    <Compile Include="BinarySearchST.cs" />
+    <Compile Include="BinarySearchSTClient.cs" />
     <Compile Include="BottomUpMergeSort.cs" />
     <Compile Include="Counter.cs" />
     <Compile Include="Date.cs" />

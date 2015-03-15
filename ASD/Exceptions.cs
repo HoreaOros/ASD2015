@@ -15,5 +15,25 @@ namespace ASD
     }
     class NoSuchElementException : System.Exception
     {
+        public NoSuchElementException()
+        {
+
+        }
+        public NoSuchElementException(string s)
+        {
+
+        }
+    }
+
+    class NullPointerException : System.Exception
+    {
+        public NullPointerException()
+        {
+
+        }
+        public NullPointerException(string s)
+        {
+
+        }
     }
 }

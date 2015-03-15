@@ -65,6 +65,12 @@ namespace ASD
         {
             first = delete(first, key);
         }
+        /// <summary>
+        /// Implementare recursiva pentru stergerea unui nod
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         private Node delete(Node x, Key key)
         {
             if (x == null) 
@@ -77,6 +83,11 @@ namespace ASD
             x.next = delete(x.next, key);
             return x;
         }
+        /// <summary>
+        /// Metoda determina daca o cheie este in tabela de simboluri
+        /// </summary>
+        /// <param name="key">cheia care se cauta</param>
+        /// <returns>true daca cheia se afla in tabela, false daca nu se afla in tabela</returns>
         public bool contains(Key key) // exista in tabela o valoare asociata cheii?
         {
             return get(key) != null;
