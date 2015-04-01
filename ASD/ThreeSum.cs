@@ -66,13 +66,13 @@ namespace ASD
 
             sw.Restart();
             arr = Util.readInts("4Kints.txt");
-            Console.WriteLine(countFast(arr) + " triplete cu suma 0");
+            Console.WriteLine(count(arr) + " triplete cu suma 0");
             sw.Stop();
             Console.WriteLine(sw.Elapsed);
 
             sw.Restart();
             arr = Util.readInts("8Kints.txt");
-            Console.WriteLine(countFast(arr) + " triplete cu suma 0");
+            Console.WriteLine(count(arr) + " triplete cu suma 0");
             sw.Stop();
             Console.WriteLine(sw.Elapsed);
         }

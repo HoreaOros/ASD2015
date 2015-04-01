@@ -79,8 +79,7 @@ namespace ASD
             {
                 yield return p.item;
                 p = p.next;
-            }
-                
+            }    
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()

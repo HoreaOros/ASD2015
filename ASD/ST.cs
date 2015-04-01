@@ -102,12 +102,12 @@ namespace ASD
         }
         public IEnumerable<Key> keys() // toate cheile din tabela
         {
-            Queue<Key> queue = new Queue<Key>();
+            StackLL<Key> stack = new StackLL<Key>();
             
             for (Node x = first; x != null; x = x.next)
-                queue.enqueue(x.key);
+                stack.push(x.key);
             
-            return queue;
+            return stack;
         }
     }
 }

@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ASD.BinarySearchSTClient</StartupObject>
+    <StartupObject>ASD.ThreeSum</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -58,6 +58,8 @@
     <Compile Include="EvaluareExpresie.cs" />
     <Compile Include="ExampleSort.cs" />
     <Compile Include="Exceptions.cs" />
+    <Compile Include="FrequencyCounter.cs" />
+    <Compile Include="FrequencyCounter2.cs" />
     <Compile Include="HeapSort.cs" />
     <Compile Include="InsertionSort.cs" />
     <Compile Include="InsertionXSort.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="StackLL.cs" />
     <Compile Include="StackLLClient.cs" />
     <Compile Include="STClient.cs" />
+    <Compile Include="STTestClient.cs" />
     <Compile Include="Stuff.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="ThreeSum.cs" />
@@ -122,11 +125,18 @@
     <Content Include="largeW.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="leipzig1M.txt" />
     <Content Include="mediumUF.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="tale.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="tinyT.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tinyTale.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="tinyUF.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
