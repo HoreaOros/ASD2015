@@ -147,7 +147,7 @@ namespace ASD
         {
             // int[] arr = { 15, 13, 12, 18, 19, 20, 7, 6, 5, 4, 3, 2, 1 };
             int[] arr = { 9, 7, 2, 8, 5, 6, 3, 4, 2 };
-            Console.WriteLine("Minim localin vector = {0}", MinimLocalV(arr, 0, arr.Length - 1));
+            Console.WriteLine("Minim local in vector = {0}", MinimLocalV(arr, 0, arr.Length - 1));
 
             int[,] arr2 = {
                           {10, 10, 10, 10, 10, 10, 10, 10, 10}, 

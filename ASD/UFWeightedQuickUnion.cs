@@ -111,7 +111,7 @@ namespace ASD
                     continue;
 
                 uf.union(p, q);
-                Console.WriteLine("{0} - {1}", p, q);
+                //Console.WriteLine("{0} - {1}", p, q);
             }
 
             Console.WriteLine("{0} componente", uf.count());

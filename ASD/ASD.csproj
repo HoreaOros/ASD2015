@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ASD.ThreeSum</StartupObject>
+    <StartupObject>ASD.SelectionSort</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -23,11 +23,11 @@ namespace ASD
 
             int[] b = { 3, 2, 1 };
 
-            sort(a);
+            sort(b);
 
-            Debug.Assert(isSorted(a), "Vectorul nu este sortat");
+            Debug.Assert(isSorted(b), "Vectorul nu este sortat");
 
-            show(a);
+            show(b);
 
         }
 

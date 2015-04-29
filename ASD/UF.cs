@@ -10,7 +10,7 @@ namespace ASD
     /// <summary>
     /// Union Find - Quick Find
     /// </summary>
-    class UF
+    class UF: IEnumerable<int>
     {
         private int[] id;
         private int componentNo;
@@ -67,14 +67,14 @@ namespace ASD
         /// <summary>
         /// Determina numarul de componente conexe
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Numarul de componente conexe</returns>
         public int count()
         {
             return componentNo;
         }
         public static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader("tinyUF.txt");
+            StreamReader sr = new StreamReader("largeUF.txt");
             string line;
 
             int N, p, q;
@@ -98,6 +98,23 @@ namespace ASD
             }
 
             Console.WriteLine("{0} componente", uf.count());
+
+            //foreach (var item in uf)
+            //{
+            //    Console.Write(item + " ");
+            //}
+
+        }
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            for (int i = 0; i < id.Length; i++)
+                yield return id[i];
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

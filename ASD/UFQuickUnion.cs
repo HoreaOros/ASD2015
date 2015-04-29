@@ -75,7 +75,7 @@ namespace ASD
         }
         public static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader("tinyUF.txt");
+            StreamReader sr = new StreamReader("largeUF.txt");
             string line;
 
             int N, p, q;
@@ -95,7 +95,7 @@ namespace ASD
                     continue;
 
                 uf.union(p, q);
-                Console.WriteLine("{0} - {1}", p, q);
+                //Console.WriteLine("{0} - {1}", p, q);
             }
 
             Console.WriteLine("{0} componente", uf.count());
