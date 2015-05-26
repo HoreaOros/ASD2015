@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ASD
 {
@@ -34,9 +35,10 @@ namespace ASD
         /// <param name="item"></param>
         public void push(Item item) 
         {
-            if (count < capacity - 1)
+            if (count < capacity)
             {
                 data[count++] = item;
+                Debug.WriteLine(item);
             }
             else
                 throw new StackFullException();

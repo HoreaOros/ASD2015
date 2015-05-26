@@ -15,7 +15,7 @@ namespace ASD
             string alg2 = arg[1]; // numele celui de-al doilea algoritm de sortare
             int N = int.Parse(arg[2]); // numarul de elemente ce sunt sortate
             int T = int.Parse(arg[3]); // numarul de iteratii ale algoritmului de sortare 
-                        //(facem mai multe sortari pentru a obtine o valoarea medie care aproximeaa mai bine timpul de executie
+                        //(facem mai multe sortari pentru a obtine o valoarea medie care aproximeaza mai bine timpul de executie
 
             double t1 = timeRandomInput(alg1, N, T);
             double t2 = timeRandomInput(alg2, N, T);
@@ -56,7 +56,10 @@ namespace ASD
                     ShellSort.sort(a);
                     break;
                 case "Merge":
-                    //MergeSort.sort(a);
+                    MergeSort.sort(a);
+                    break;
+                case "MergeX":
+                    MergeXSort.sort(a);
                     break;
                 case "Quick":
                     //QuickSort.sort(a);

@@ -29,7 +29,7 @@ namespace ASD
 
         }
         /// <summary>
-        /// InsertionX sort. Mai eficient decat InsetionSort pentru ca folosim un singur apel la exch pentru fiecare element.
+        /// InsertionXSort. Mai eficient decat InsertionSort pentru ca folosim un singur apel la exch pentru fiecare element.
         /// Toate elementele din stanga pozitiei i sunt ordonate. 
         /// Elementul de pe pozitia i il inseram la locul lui prin mutarea elementelor inspre dreapta daca e cazul
         /// </summary>
