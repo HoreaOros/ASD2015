@@ -9,7 +9,7 @@ namespace ASD
     static class Euclid
     {
         /// <summary>
-        /// Algoitmul lui Euclid extins care determina cmmdc a doua numere a si b si doua numere x si y cu proprietatea ax + by = d
+        /// Algoritmul lui Euclid extins care determina cmmdc a doua numere a si b si doua numere x si y cu proprietatea ax + by = d
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
