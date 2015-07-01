@@ -1,0 +1,166 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ASD
+{
+    class StackDLL<Item>: IEnumerable<Item>
+    {
+        Node first = null,end=null;
+        int count = 0;
+        /// <summary>
+        /// Clasa incuibata pentru reprezentarea unui nod al listei inlantuite
+        /// </summary>
+        private class Node
+        {
+            public Item item;
+            public Node next;
+            public Node prev;
+        }
+        public StackDLL()
+        {
+            
+        }
+        /// <summary>
+        /// Adauga un nou element in stiva la inceput
+        /// </summary>
+        /// <param name="item"></param>
+        public void push_front(Item item)
+        {
+            if (isEmpty())
+            {
+                Node p = new Node();
+                p.item = item;
+                p.next = null;
+                p.prev = null;
+                end = first = p;
+                count++;
+            }
+            else
+            {
+                Node p = new Node();
+                p.item = item;
+                p.prev = null;
+                p.next = first;
+                first.prev = p;
+                first = p;
+                count++;
+            }
+        }
+        /// <summary>
+        /// Adauga un nou element in stiva la Sfarsit
+        /// </summary>
+        /// <param name="item"></param>
+        public void push_back(Item item)
+        {
+            if (isEmpty())
+            {
+                Node p = new Node();
+                p.item = item;
+                p.next = null;
+                p.prev = null;
+                end = first = p;
+                count++;
+            }
+            else
+            {
+                Node p = new Node();
+                p.item = item;
+                p.next = null;
+                p.prev = end;
+                end.next = p;
+                end = p;
+                count++;
+            }
+        }
+        /// <summary>
+        /// Cautare element
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        /*
+        public  Node search(Node x,Item item)
+        {
+            while ((x != null) && ((x.item) != item))
+            {
+                x = x.next;
+            }
+            return x;
+           
+        }*/
+        /// <summary>
+        /// Elimina un element din stiva
+        /// </summary>
+        /// <returns></returns>
+        public Item pop_front()
+        {
+            if(!isEmpty())
+            {
+                if (first == end)
+                {
+                    Node temp = first;
+                    first = first.next;
+                    first.prev = null;
+                    count--;
+                    return temp.item;
+                }
+                Node p = first;
+                first.next.prev = null;
+                first = first.next;
+                count--;
+                    return p.item;
+            }
+            else
+                throw new StackEmptyException();
+        }
+        public Item pop_back()
+        {
+            if (!isEmpty())
+            {
+                Node temp = end;
+                end = end.prev;
+                end.prev.next = null;
+                count--;
+                return temp.item;
+            }
+            else
+                throw new StackEmptyException();
+        }
+
+        /// <summary>
+        /// Verifica daca stiva e goala
+        /// </summary>
+        /// <returns></returns>
+        public bool isEmpty()
+        {
+            return first == null; // sau count == 0;
+        }
+        /// <summary>
+        /// Numarul de elemente din stiva
+        /// </summary>
+        /// <returns></returns>
+        public int size()
+        {
+            return count;
+        }
+
+        public IEnumerator<Item> GetEnumerator()
+        {
+            Node p = first;
+            while (p != null)
+            {
+                yield return p.item;
+                p = p.next;
+            }
+                
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+}
