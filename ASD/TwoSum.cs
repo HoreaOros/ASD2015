@@ -50,6 +50,8 @@ namespace ASD
                 if (arr[i] + arr[j] == 0)
                 {
                     contor++;
+                    i++;
+                    j--;
                 }
                 else if (arr[i] + arr[j] < 0)
                     i++;
