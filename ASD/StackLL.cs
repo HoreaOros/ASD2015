@@ -10,7 +10,7 @@ namespace ASD
     /// Stiva implementata cu o lista inlantuita
     /// </summary>
     /// <typeparam name="Item"></typeparam>
-    class StackLL<Item>: IEnumerable<Item>
+    class StackLL<Item>: IEnumerable<Item>, IStack<Item>
     {
         Node first = null;
         int count = 0;
@@ -85,6 +85,19 @@ namespace ASD
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public Item peek()
+        {
+            if (!isEmpty())
+            {
+                Node temp = first;
+                //first = first.next;
+                //count--;
+                return temp.item;
+            }
+            else
+                throw new StackEmptyException();
         }
     }
 }

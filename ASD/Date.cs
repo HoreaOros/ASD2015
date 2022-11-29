@@ -13,6 +13,7 @@ namespace ASD
         private int zi, luna, an;
         public Date(int zi, int luna, int an)
         {
+            // TODO validare (zi, luna, an)
             this.zi = zi;
             this.luna = luna;
             this.an = an;

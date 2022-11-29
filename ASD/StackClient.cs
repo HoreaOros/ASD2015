@@ -19,6 +19,11 @@ namespace ASD
             {
                 Console.WriteLine(st.pop());
             }
+
+
+            IStack<int> intStack = new Stack<int>(10);
+
+            intStack = new StackLL<int>();
         }
     }
 }

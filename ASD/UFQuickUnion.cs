@@ -81,9 +81,9 @@ namespace ASD
             int N, p, q;
             line = sr.ReadLine();
             N = int.Parse(line);
-
+            int procent = 0;
             UFQuickUnion uf = new UFQuickUnion(N);
-
+            int contor = 0;
             while (!sr.EndOfStream)
             {
                 line = sr.ReadLine();
@@ -91,6 +91,13 @@ namespace ASD
                 p = int.Parse(tokens[0]);
                 q = int.Parse(tokens[1]);
 
+                contor++;
+                
+                if (contor % 20000 == 0)
+                {
+                    ++procent;
+                    Console.WriteLine($"{procent}%");
+                }
                 if (uf.connected(p, q))
                     continue;
 

@@ -23,6 +23,9 @@ namespace ASD
 
             sort(a);
 
+
+            //Debug.Listeners.Add(new TextWriterTraceListener(Console.Out));
+            //Debug.AutoFlush = true;
             Debug.Assert(isSorted(a), "Vectorul nu este sortat");
 
             show(a);
@@ -60,7 +63,7 @@ namespace ASD
                     a[k] = aux[j++];
                 else if (j > hi)
                     a[k] = aux[i++];
-                else if (less(aux[j], aux[i]))
+                else if (less(aux[j], aux[i])) 
                     a[k] = aux[j++];
                 else
                     a[k] = aux[i++];

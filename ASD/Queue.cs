@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ASD
 {
+    // TODO - implementare coada cu vectori a.i. sa folosim vectorul in mod circular.
     /// <summary>
     /// Coada FIFO de dimensiune fixa
     /// </summary>

@@ -43,36 +43,60 @@ namespace ASD
 
             // trebuie scrisa o secventa liniara care determina cate perechi de numere din vectorul arr au suma 0
             // TODO
+            int i = 0;
+            int j = arr.Length - 1;
+            while (i < j)
+            {
+                if (arr[i] + arr[j] == 0)
+                {
+                    contor++;
+                }
+                else if (arr[i] + arr[j] < 0)
+                    i++;
+                else
+                    j--;
 
+            }
             return contor;
         }
         public static void Main(string[] args)
         {
-
+            int p;
+            int[] arr;
+            
             Stopwatch sw = new Stopwatch();
-
+            
+            arr = Util.readInts("1Kints.txt");
             sw.Start();
-            int[] arr = Util.readInts("1Kints.txt");
-            Console.WriteLine(count(arr) + " triplete cu suma 0");
+            p = count(arr);
             sw.Stop();
+            
+            Console.WriteLine(p + " perechi cu suma 0");
             Console.WriteLine(sw.Elapsed);
-
-            sw.Restart();
+            
             arr = Util.readInts("2Kints.txt");
-            Console.WriteLine(count(arr) + " triplete cu suma 0");
+            sw.Restart();
+            p = count(arr);
             sw.Stop();
+
+            Console.WriteLine(p + " perechi cu suma 0");
             Console.WriteLine(sw.Elapsed);
 
-            sw.Restart();
             arr = Util.readInts("4Kints.txt");
-            Console.WriteLine(countFast(arr) + " triplete cu suma 0");
-            sw.Stop();
-            Console.WriteLine(sw.Elapsed);
-
             sw.Restart();
-            arr = Util.readInts("8Kints.txt");
-            Console.WriteLine(countFast(arr) + " triplete cu suma 0");
+            p = count(arr);
             sw.Stop();
+
+            Console.WriteLine(p + " perechi cu suma 0");
+            Console.WriteLine(sw.Elapsed);
+            
+            
+            arr = Util.readInts("8Kints.txt");
+            sw.Restart();
+            p = count(arr);
+            sw.Stop();
+
+            Console.WriteLine(p + " perechi cu suma 0");
             Console.WriteLine(sw.Elapsed);
         }
     }

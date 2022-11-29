@@ -145,7 +145,6 @@ namespace ASD
             {
                 Console.WriteLine(item);
             }
-
         }
     }
 }

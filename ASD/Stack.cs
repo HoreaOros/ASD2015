@@ -11,7 +11,7 @@ namespace ASD
     /// Stiva LIFO de dimensiune fixa
     /// </summary>
     /// <typeparam name="Item"></typeparam>
-    public class Stack<Item>: IEnumerable<Item>
+    public class Stack<Item> : IEnumerable<Item>, IStack<Item>
     {
         private Item[] data;
         private int count = 0;
@@ -33,7 +33,7 @@ namespace ASD
         /// Adaugarea unui element in stiva
         /// </summary>
         /// <param name="item"></param>
-        public void push(Item item) 
+        public void push(Item item)
         {
             if (count < capacity)
             {
@@ -42,13 +42,13 @@ namespace ASD
             }
             else
                 throw new StackFullException();
-            
+
         }
         /// <summary>
         /// Eliminarea ultimului elementului adaugat
         /// </summary>
         /// <returns></returns>
-        public Item pop() 
+        public Item pop()
         {
             if (!isEmpty())
             {
@@ -86,13 +86,13 @@ namespace ASD
         {
             return count;
         }
-        public static void Main(string[] args)
-        {
-            Stack<String> stack = new Stack<String>();
-            stack.push("Test");
+        //public static void Main(string[] args)
+        //{
+        //    Stack<String> stack = new Stack<String>();
+        //    stack.push("Test");
 
-            String next = stack.pop();
-        }
+        //    String next = stack.pop();
+        //}
 
 
         public IEnumerator<Item> GetEnumerator()
@@ -109,5 +109,5 @@ namespace ASD
         }
     }
 
-   
+
 }

@@ -19,15 +19,17 @@ namespace ASD
                 sll.push(item);
 	        }
 
-            //while (!sll.isEmpty())
-            //{
-            //    Console.WriteLine(sll.pop());
-            //}
+            Console.WriteLine($"Nr. de elemente din stiva: {sll.size()}");
 
-            foreach (var item in sll)
+            while (!sll.isEmpty())
             {
-                Console.WriteLine(item);
+                Console.WriteLine(sll.pop());
             }
+            Console.WriteLine($"Nr. de elemente din stiva: {sll.size()}");
+            //foreach (var item in sll)
+            //{
+            //    Console.WriteLine(item);
+            //}
         }
         
     }

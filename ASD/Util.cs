@@ -31,7 +31,7 @@ namespace ASD
         {
             string line;
             string[] tokens;
-            char[] seps = { ' ', '\t', '\n' };
+            char[] seps = { ' ', '\t', '\n', '\r'};
             using (StreamReader sr = new StreamReader(filename))
             {
                 line = sr.ReadToEnd();

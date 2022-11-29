@@ -15,12 +15,18 @@ namespace ASD
                 bag.add(item);
             }
 
-            int suma = 0;
-            foreach (var item in bag)
+            //int suma = 0;
+            //foreach (var item in bag)
+            //{
+            //    suma += item;
+            //}
+            //Console.WriteLine("Suma elementelor din bag = {0}", suma);
+
+            IEnumerator<int> enumerator = bag.GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                suma += item;
+                Console.WriteLine(enumerator.Current);
             }
-            Console.WriteLine("Suma elementelor din bag = {0}", suma);
         }
     }
 }
