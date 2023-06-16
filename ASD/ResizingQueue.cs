@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,34 +6,36 @@ using System.Threading.Tasks;
 
 namespace ASD
 {
-    // TODO - implementare coada cu vectori a.i. sa folosim vectorul in mod circular.
-    /// <summary>
-    /// Coada FIFO de dimensiune fixa
-    /// </summary>
-    /// <typeparam name="Item"></typeparam>
-    class Queue<Item>: IEnumerable<Item>
+    class ResizingQueue<Item>: IEnumerable<Item>
     {
         private Item[] data;
-        private int capacity = 42;
+        private int capacity = 32;
         private int left = 0, right = 0;
         /// <summary>
         /// Crearea unei cozi fara nici un element
         /// </summary>
-        public Queue()
+        public ResizingQueue()
         {
             data = new Item[capacity];
         }
-        public Queue(int capacity)
+        public ResizingQueue(int capacity)
         {
             this.capacity = capacity;
             data = new Item[capacity];
         }
-        int nextPoz(int index)
+        /// <summary>
+        /// Redimensionare Bag
+        /// </summary>
+        /// <param name="max">Noua dimensiune a bag-lui</param>
+        private void resize(int max)
         {
-            if (index < capacity - 1)
-                return index + 1;
-            else
-                return 0;
+            Item[] temp = new Item[max];
+            for (int i = left; i < right; i++)
+            {
+                temp[i] = data[i];
+            }
+            data = temp;
+            this.capacity = max;
         }
         /// <summary>
         /// Adaugarea unui element in coada
@@ -41,28 +43,28 @@ namespace ASD
         /// <param name="item">Elementul ce se adauga</param>
         public void enqueue(Item item)
         {
-            if (left == nextPoz(right))
-                throw new QueueFullException();
-            else
-                data[right] = item;
-            right = nextPoz(right);
+            if (right == capacity)
+                resize(2 * capacity);
 
-         } 
+            data[right++] = item;
+
+        }
         /// <summary>
         /// Eliminarea elementului care a fost adaugat cel mai demult
         /// </summary>
         /// <returns></returns>
         public Item dequeue()
         {
-            Item x;
-            if (left == right)
-                throw new QueueEmptyException();
+            if (right == capacity / 4)
+            {
+                resize(capacity / 2);
+            }
+            if (left < right)
+                return data[left++];
             else
-                x = data[left];
-            left = nextPoz(left);
-            return x;
+                throw new QueueEmptyException();
         }
-         /// <summary>
+        /// <summary>
         /// Este goala coada?
         /// </summary>
         /// <returns></returns>
@@ -76,27 +78,14 @@ namespace ASD
         /// <returns></returns>
         public int size()
         {
-            if(left<right)
             return right - left;
-            else
-            return left-right;
         }
         public IEnumerator<Item> GetEnumerator()
         {
-            if (left < right)
+            for (int i = left; i < right; i++)
             {
-                for (int i = left; i < right; i++)
-                    yield return data[i];
+                yield return data[i];
             }
-            else
-            {
-                for (int j = 0; j < right; j++)
-                    yield return data[j];
-                for (int i = left; i < capacity; i++)
-                    yield return data[i];
-
-            }
-
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
